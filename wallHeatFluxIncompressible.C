@@ -75,8 +75,7 @@ int main(int argc, char *argv[])
          // update the turbulence fields
         turbulence->read();
 
-      //  if (!(IOobject("alphat", runTime.timeName(), mesh).headerOk()))
-        if (alphat.headerOk())
+        if (!(alphat.headerOk()))
         {
             Info<< "\nCalculating turbulent heat conductivity " << endl;
             alphat = turbulence->nut()/Prt;
@@ -87,8 +86,7 @@ int main(int argc, char *argv[])
             Info<< "\nRead turbulent heat conductivity alphat" << endl;
         }
 
-      //  if (!(IOobject("alphaEff", runTime.timeName(), mesh).headerOk()))
-        if (alphaEff.headerOk())
+        if (!(alphaEff.headerOk()))
         {
             Info<< "\nCalculating effective heat conductivity " << endl;
             alphaEff=turbulence->nu()/Pr+alphat;
